@@ -58,7 +58,7 @@ String.prototype.truncate = function(length){
 	Truncates the current array to the supplied length
 **/
 Array.prototype.truncate = function(length){
-	return this.splice(0, length);
+	return this.slice(0, length);
 }
 
 /**
@@ -86,15 +86,14 @@ Array.prototype.random = function( r ) {
 /**
 	Boolean check to find out if a supplied character is in the current string
 **/
-String.prototype.contains = function(e){
-	for(j=0; j< this.length; j++){
-		if(this[j] == e){
-			return true;
-		}else{
-			return false;
-		}
-	}
+String.prototype.contains = function(value) {
+    var i = this.length;
+    while (i--) {
+        if (this[i] === value) return true;
+    }
+    return false;
 }
+
 
 /**
 	Boolean check to find out if a supplied element/string is in the current array
