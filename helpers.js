@@ -1,5 +1,5 @@
 /*
-	Object/Array helpers
+	String/Array helpers
 	For SocketStream's helpers.js
 	Addy Osmani, 2011.
 */
