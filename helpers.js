@@ -47,11 +47,11 @@ Array.prototype.last = function(){
 	Truncates the current string to the supplied length
 **/
 String.prototype.truncate = function(length){	
-  if (this.length > length) {
-    return this.slice(0, length - 3) + "...";
-  } else {
-    return this;
-  }
+	if (this.length > length) {
+	    return this.slice(0, length - 3) + "...";
+	}else {
+		return this;
+	}
 };
 
 /**
