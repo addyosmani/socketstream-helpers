@@ -92,7 +92,7 @@ String.prototype.contains = function(value) {
         if (this[i] === value) return true;
     }
     return false;
-}
+};
 
 
 /**
@@ -104,7 +104,7 @@ Array.prototype.contains = function(value) {
         if (this[i] === value) return true;
     }
     return false;
-}
+};
 
 
 /**
@@ -112,6 +112,21 @@ Array.prototype.contains = function(value) {
 **/
 Array.prototype.any = function(){
 	return !(this && this.constructor==Array && this.length==0);
-}
+};
+
+
+/**
+	Sanitize content containing URLs or mailto/email references
+**/
+String.prototype.sanitize = function(){
+	return this.replace(/(([fh]+t+p+s?\:\/)+([^"'\s]+))/gi,"<a href=\"$1\" target=\"_blank\">$1<\/a>").
+	  replace(/([a-z0-9\-\.]+\@[a-z0-9\-]+([^"'\s]+))/gi,"<a href=\"mailto:$1\" target=\"_blank\">$1<\/a>");
+};
+
+
+
+
+
+
 
 

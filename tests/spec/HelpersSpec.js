@@ -1,7 +1,10 @@
 describe("Helpers", function(){
 	var testString = "helloworld",
 		testArray  = ['alpha','beta','gamma','beta'],
-		emptyArray = [];
+		emptyArray = [],
+		testHTML = "http://www.github.com and some other text",
+		testMailto = "you might want to email mailto:test@github.com",
+		testMailHTML = "example 1 is http://github.com and example 2 is mailto:test@github.com";
 		
 	
 	it("should remove all the duplicates from an array", function(){
@@ -57,4 +60,9 @@ describe("Helpers", function(){
 		expect(testArray.any()).toBeTruthy();
 	});
 	
+	it("should be able to sanitize a string containg URLs or mailto references", function(){
+		expect(testHTML.sanitize()).toEqual('<a href="http://www.github.com" target="_blank">http://www.github.com</a> and some other text');
+		expect(testMailto.sanitize()).toEqual('you might want to email mailto:<a href="mailto:test@github.com" target="_blank">test@github.com</a>');
+		expect(testMailHTML.sanitize()).toEqual('example 1 is <a href="http://github.com" target="_blank">http://github.com</a> and example 2 is mailto:<a href="mailto:test@github.com" target="_blank">test@github.com</a>');
+	});
 });
