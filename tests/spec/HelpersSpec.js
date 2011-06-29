@@ -1,6 +1,7 @@
 describe("Helpers", function(){
 	var testString = "helloworld",
-		testArray  = ['alpha','beta','gamma','beta'];
+		testArray  = ['alpha','beta','gamma','beta'],
+		emptyArray = [];
 		
 	
 	it("should remove all the duplicates from an array", function(){
@@ -49,6 +50,11 @@ describe("Helpers", function(){
 		expect(testArray.contains('betas')).toBeFalsy();
 		expect(testArray.contains('gamma')).toBeTruthy();
 		expect(testArray.contains('gammas')).toBeFalsy();
+	});
+	
+	it("should be able to return true/false depending on whether an array contains any elements", function(){
+		expect(emptyArray.any()).toBeFalsy();
+		expect(testArray.any()).toBeTruthy();
 	});
 	
 });

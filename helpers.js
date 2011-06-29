@@ -107,4 +107,11 @@ Array.prototype.contains = function(value) {
 }
 
 
+/**
+	Boolean check to find out if an array contains any elements
+**/
+Array.prototype.any = function(){
+	return !(this && this.constructor==Array && this.length==0);
+}
+
 
