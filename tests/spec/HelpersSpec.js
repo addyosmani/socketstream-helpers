@@ -60,6 +60,20 @@ describe("Helpers", function(){
 		expect(testArray.any()).toBeTruthy();
 	});
 	
+	it("should be able to ensure that a function is called with a particular this value", function(){
+		
+		var a = 11;
+		var testMod = { a : 20, getA: function(){ return this.a;} };
+		testMod.getA(); 
+		var getA = testMod.getA;
+		var boundGetA = getA.bind(testMod);
+		boundGetA(); 
+		
+		expect(testMod.getA()).toEqual(20);
+		expect(boundGetA()).toEqual(20);
+		
+	});
+	
 	it("should be able to sanitize a string containg URLs or mailto references", function(){
 		expect(testHTML.sanitize()).toEqual('<a href="http://www.github.com" target="_blank">http://www.github.com</a> and some other text');
 		expect(testMailto.sanitize()).toEqual('you might want to email mailto:<a href="mailto:test@github.com" target="_blank">test@github.com</a>');
